@@ -1,7 +1,7 @@
 import { IUsuario } from "./models/usuario.interface"
 import {Column, Entity, JoinColumn, JoinTable, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 import { Credencial } from "./credencial.entity"
-import { ocupacao } from "./ocupacao.entity"
+import { Ocupacao } from "./ocupacao.entity"
 
 @Entity({
   name: 'usuario',
@@ -50,9 +50,9 @@ export class Usuario implements IUsuario {
     @JoinColumn({ name: 'credencialid' })
     credencial?: Credencial;
 
-    @ManyToOne(() => ocupacao, ocupacao => ocupacao.usuarios)
+    @ManyToOne(() => Ocupacao, ocupacao => ocupacao.usuarios)
     @JoinColumn({ name: 'ocupacaoid' })
-    ocupacao?: ocupacao;
+    ocupacao?: Ocupacao;
 
     constructor(nome: string, ocupacaoid: number) {
       this.nome = nome

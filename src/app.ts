@@ -11,6 +11,7 @@ import { credencialRoutes } from "./http/controllers/credencial/route"
 import fastifySwagger from '@fastify/swagger';
 import {jsonSchemaTransform, serializerCompiler,validatorCompiler} from "fastify-type-provider-zod";
 import fastifySwaggerUi from "@fastify/swagger-ui"
+import { planoAulaRoutes } from "./http/controllers/planoAula/route"
 
 export const app = fastify()
 
@@ -60,5 +61,9 @@ app.register(usuarioRoutes)
 
 console.log('Registrando rota 2 /credencial') 
 app.register(credencialRoutes)
+
+
+console.log('Registrando rota 3 /planoAula') 
+app.register(planoAulaRoutes)
 
 app.setErrorHandler(globalErrorHandler)

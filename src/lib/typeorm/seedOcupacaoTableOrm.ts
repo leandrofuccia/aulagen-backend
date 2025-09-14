@@ -1,8 +1,8 @@
 import { appDataSource } from "./typeorm";
-import { ocupacao } from "@/entities/ocupacao.entity";
+import { Ocupacao } from "@/entities/ocupacao.entity";
 
 export async function seedOcupacaoTableOrm() {
-  const ocupacaoRepository = appDataSource.getRepository(ocupacao);
+  const ocupacaoRepository = appDataSource.getRepository(Ocupacao);
 
   const existingEntries = await ocupacaoRepository.find();
   if (existingEntries.length > 0) {

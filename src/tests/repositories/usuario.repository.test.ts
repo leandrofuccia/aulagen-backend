@@ -1,5 +1,5 @@
 import { Credencial } from "@/entities/credencial.entity";
-import { ocupacao } from "@/entities/ocupacao.entity";
+import { Ocupacao } from "@/entities/ocupacao.entity";
 import { Usuario } from "@/entities/usuario.entity";
 import { appDataSource } from "@/lib/typeorm/typeorm";
 import { UsuarioRepository } from "@/lib/typeorm/usuario.repository";
@@ -11,7 +11,7 @@ beforeAll(async () => {
     type: 'sqlite',
     database: ':memory:',
     dropSchema: true,
-    entities: [Credencial, Usuario, ocupacao], 
+    entities: [Credencial, Usuario, Ocupacao], 
     synchronize: false,
     logging: false,
   });
@@ -168,7 +168,7 @@ describe('UsuarioRepository', () => {
   it('deve verificar se NODE_ENV afeta a criação de datas', async () => {
     process.env.NODE_ENV = 'test';
   
-    let ocupacaoRepository = appDataSource.getRepository(ocupacao);
+    let ocupacaoRepository = appDataSource.getRepository(Ocupacao);
       const ocupacaoTest = await ocupacaoRepository.save({
       id: 2,
       ocupacao: "Professor",
@@ -188,7 +188,7 @@ describe('UsuarioRepository', () => {
   
     process.env.NODE_ENV = 'production';
 
-    ocupacaoRepository = appDataSource.getRepository(ocupacao);
+    ocupacaoRepository = appDataSource.getRepository(Ocupacao);
     const ocupacaoProd = await ocupacaoRepository.save({
       id: 1,
       ocupacao: "Aluno",

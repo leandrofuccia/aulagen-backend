@@ -4,8 +4,10 @@ import { Usuario } from "@/entities/usuario.entity";
 import { Credencial } from "@/entities/credencial.entity";
 import path from "path";
 import dotenv from "dotenv";
-import { ocupacao } from "@/entities/ocupacao.entity";
+import { Ocupacao } from "@/entities/ocupacao.entity";
 import { seedOcupacaoTableOrm } from "@/lib/typeorm/seedOcupacaoTableOrm";
+import { HabilidadeBNCC } from "@/entities/habilidadeBNCC.entity";
+import { PlanoAula } from "@/entities/planoAula.entity";
 
 const envFilePath = process.env.NODE_ENV === "test" ? ".env.test" : ".env";
 const envPath = path.resolve(process.cwd(), envFilePath);
@@ -23,7 +25,7 @@ export const appDataSource = new DataSource({
   username: env.NODE_ENV === "test" ? undefined : env.DATABASE_USER || "aulagendb",
   password: env.NODE_ENV === "test" ? undefined : env.DATABASE_PASSWORD || "sua_senha_segura",
   database: env.NODE_ENV === "test" ? ":memory:" : env.DATABASE_NAME || "aulagendb",
-  entities: [ocupacao, Usuario, Credencial],
+  entities: [Ocupacao, Usuario, Credencial, HabilidadeBNCC, PlanoAula],
   logging: env.NODE_ENV === "development",
   synchronize: env.NODE_ENV !== "production",  
 });

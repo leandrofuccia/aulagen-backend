@@ -1,5 +1,5 @@
 import { Credencial } from "@/entities/credencial.entity";
-import { ocupacao } from "@/entities/ocupacao.entity";
+import { Ocupacao } from "@/entities/ocupacao.entity";
 import { Usuario } from "@/entities/usuario.entity";
 import { CredencialRepository } from "@/lib/typeorm/credencial.repository";
 import { appDataSource } from "@/lib/typeorm/typeorm";
@@ -11,7 +11,7 @@ beforeAll(async () => {
     type: 'sqlite',
     database: ':memory:',
     dropSchema: true,
-    entities: [Credencial, Usuario, ocupacao], 
+    entities: [Credencial, Usuario, Ocupacao], 
     synchronize: false,
     logging: false,
   });

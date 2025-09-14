@@ -4,7 +4,7 @@ import { Usuario } from "./usuario.entity";
 import { IOcupacao } from "./models/ocupacao.interface";
 
 @Entity({ name: 'ocupacao' })
-export class ocupacao implements IOcupacao {
+export class Ocupacao implements IOcupacao {
     @PrimaryColumn({ type: "integer" })
     id?: number;
 
