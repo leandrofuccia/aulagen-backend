@@ -8,6 +8,7 @@ import { Ocupacao } from "@/entities/ocupacao.entity";
 import { seedOcupacaoTableOrm } from "@/lib/typeorm/seedOcupacaoTableOrm";
 import { HabilidadeBNCC } from "@/entities/habilidadeBNCC.entity";
 import { PlanoAula } from "@/entities/planoAula.entity";
+import { seedHabilidadeBNCCTableOrm } from "./seedHabilidadeBNCCTableOrm";
 
 const envFilePath = process.env.NODE_ENV === "test" ? ".env.test" : ".env";
 const envPath = path.resolve(process.cwd(), envFilePath);
@@ -48,6 +49,11 @@ export async function initializeDatabase(): Promise<void> {
     if (env.NODE_ENV !== "test") {
       console.log("Database conectado com sucesso!");
       await seedOcupacaoTableOrm(); 
+    }
+
+    if (env.NODE_ENV !== "test") {
+      console.log("Database conectado com sucesso!");
+      await seedHabilidadeBNCCTableOrm(); 
     }
 
   } catch (error) {
