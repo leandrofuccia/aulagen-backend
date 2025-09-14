@@ -1,0 +1,48 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: aulagen_app
+    image: leandrofuccia/blog-app:${TIMESTAMP:-latest}
+    ports:
+      - "3002:3002"
+    environment:
+      NODE_ENV: development
+      DOCKER_ENV: true
+      DATABASE_USER: aulagendb
+      DATABASE_HOST: db
+      DATABASE_NAME: aulagendb
+      DATABASE_PASSWORD: sua_senha_segura
+      DATABASE_PORT: 5432
+      JWT_SECRET: sua_chave_secreta
+    depends_on:
+      - db
+    command: "bash ./wait-for-it.sh db:5432 -- node build/server.cjs"
+    networks:
+      - app-network
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    image: postgres:latest
+    container_name: postgres_aulagen_db
+    environment:
+      POSTGRES_USER: aulagendb
+      POSTGRES_PASSWORD: sua_senha_segura
+      postgres_aulagen_db: aulagendb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+                 
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge
+    external: true
