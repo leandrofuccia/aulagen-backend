@@ -9,6 +9,8 @@ import { seedOcupacaoTableOrm } from "@/lib/typeorm/seedOcupacaoTableOrm";
 import { HabilidadeBNCC } from "@/entities/habilidadeBNCC.entity";
 import { PlanoAula } from "@/entities/planoAula.entity";
 import { seedHabilidadeBNCCTableOrm } from "./seedHabilidadeBNCCTableOrm";
+import { Aula } from "@/entities/aula.entity";
+import { Atividade } from "@/entities/atividade.entity";
 
 const envFilePath = process.env.NODE_ENV === "test" ? ".env.test" : ".env";
 const envPath = path.resolve(process.cwd(), envFilePath);
@@ -26,7 +28,7 @@ export const appDataSource = new DataSource({
   username: env.NODE_ENV === "test" ? undefined : env.DATABASE_USER || "aulagendb",
   password: env.NODE_ENV === "test" ? undefined : env.DATABASE_PASSWORD || "sua_senha_segura",
   database: env.NODE_ENV === "test" ? ":memory:" : env.DATABASE_NAME || "aulagendb",
-  entities: [Ocupacao, Usuario, Credencial, HabilidadeBNCC, PlanoAula],
+  entities: [Ocupacao, Usuario, Credencial, HabilidadeBNCC, PlanoAula, Aula, Atividade],
   logging: env.NODE_ENV === "development",
   synchronize: env.NODE_ENV !== "production",  
 });

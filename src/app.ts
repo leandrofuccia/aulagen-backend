@@ -11,7 +11,10 @@ import { credencialRoutes } from "./http/controllers/credencial/route"
 import fastifySwagger from '@fastify/swagger';
 import {jsonSchemaTransform, serializerCompiler,validatorCompiler} from "fastify-type-provider-zod";
 import fastifySwaggerUi from "@fastify/swagger-ui"
+
+import { habilidadeBNCCRoutes } from "./http/controllers/habilidadeBNCC/route"
 import { planoAulaRoutes } from "./http/controllers/planoAula/route"
+
 
 export const app = fastify()
 
@@ -62,8 +65,24 @@ app.register(usuarioRoutes)
 console.log('Registrando rota 2 /credencial') 
 app.register(credencialRoutes)
 
+console.log('Registrando rota 4 /habilidadeBNCC') 
+app.register(habilidadeBNCCRoutes)
 
 console.log('Registrando rota 3 /planoAula') 
 app.register(planoAulaRoutes)
+
+/*app.register(fastifyFormbody);
+console.log('Registrando rota 4 /genIA') 
+app.register(genIARoutes)
+*/
+
+/*dns.lookup("generativelanguage.googleapis.com", (err, address) => {
+  if (err) {
+    console.error("❌ DNS falhou dentro do Fastify:", err.message);
+  } else {
+    console.log("✅ DNS resolvido dentro do Fastify:", address);
+  }
+});
+*/
 
 app.setErrorHandler(globalErrorHandler)

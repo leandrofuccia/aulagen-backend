@@ -1,10 +1,11 @@
 
 import { Repository } from "typeorm";
 import { appDataSource } from "./typeorm";
-import { ICredencialRepository } from "@/repositories/credencial.repository.interface";
+
 import { Credencial } from "@/entities/credencial.entity";
 import { ICredencial } from "@/entities/models/credencial.interface";
 import { ResourceNotFoundError } from "@/use-cases/errors/resource-not-found-error";
+import { ICredencialRepository } from "@/repositories/credencial.repository.interface";
 
 export class CredencialRepository implements ICredencialRepository{
     

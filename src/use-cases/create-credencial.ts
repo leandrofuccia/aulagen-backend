@@ -1,6 +1,7 @@
 import { ICredencial } from "@/entities/models/credencial.interface";
 import { ICredencialRepository } from "@/repositories/credencial.repository.interface";
 
+
 export class CreateCredencialUseCase {
   constructor(private credencialRepository: ICredencialRepository) {}
 

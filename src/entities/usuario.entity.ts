@@ -2,6 +2,7 @@ import { IUsuario } from "./models/usuario.interface"
 import {Column, Entity, JoinColumn, JoinTable, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 import { Credencial } from "./credencial.entity"
 import { Ocupacao } from "./ocupacao.entity"
+import { PlanoAula } from "./planoAula.entity"
 
 @Entity({
   name: 'usuario',
@@ -53,6 +54,9 @@ export class Usuario implements IUsuario {
     @ManyToOne(() => Ocupacao, ocupacao => ocupacao.usuarios)
     @JoinColumn({ name: 'ocupacaoid' })
     ocupacao?: Ocupacao;
+
+    @OneToMany(() => PlanoAula, (planoAula) => planoAula.criador)
+    planosDeAula: PlanoAula[];
 
     constructor(nome: string, ocupacaoid: number) {
       this.nome = nome

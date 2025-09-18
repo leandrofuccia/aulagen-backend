@@ -1,7 +1,5 @@
 import { IPlanoAula, IPlanoAulaRepository } from "@/repositories/planoAula.repository.interface";
 
-
-
 export class CreatePlanoAulaUseCase {
   constructor(private planoAulaRepository: IPlanoAulaRepository) {}
 
@@ -9,6 +7,5 @@ export class CreatePlanoAulaUseCase {
     return this.planoAulaRepository.create(planoAula)
   }
 }
-
 
 

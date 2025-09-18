@@ -45,6 +45,8 @@ const envSchema = z.object({
   DATABASE_PASSWORD: z.string().optional(),
   DATABASE_PORT: z.coerce.number().optional(),
   JWT_SECRET: z.string(),
+  GEMINI_API_KEY:z.string(),
+  GEMINI_API_IP:z.string(),
 });
 
 const _env = envSchema.safeParse(environment);

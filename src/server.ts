@@ -13,7 +13,8 @@ async function startServer() {
     const host = "0.0.0.0"; // Use "0.0.0.0" para aceitar conexões externas
 
     // Inicia o servidor
-    app.listen({ port, host }, (err, address) => {
+    //app.listen({ port, host }, (err, address) => {
+    app.listen({ host: '0.0.0.0', port: 3001 }, (err, address) => {
       if (err) {
         console.error('Error starting server:', err);
         process.exit(1);

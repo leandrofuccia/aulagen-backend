@@ -15,6 +15,6 @@ export class HabilidadeBNCC {
   @Column({ name: 'versao', type: 'varchar' }) versao: string;
   @Column({ name: 'status', type: 'varchar', default: 'ativa' }) status: string;
 
-  @OneToMany(() => PlanoAula, planoAula => planoAula.habilidade)
+  @OneToMany(() => PlanoAula, planoAula => planoAula.habilidade_bncc)
   planos?: PlanoAula[];
 }
