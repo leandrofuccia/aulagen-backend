@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import { gerarPlanoAula } from "./gerarPlanoAula";
 import { atividadeOutputSchema, aulaOutputSchema, planoAulaOutputSchema } from "./schemas";
+import { findPlanoAulaByUsuario } from "./findPlanoAulaByUsuario";
 
 export async function planoAulaRoutes(app: FastifyInstance) {
     
@@ -51,11 +52,9 @@ export async function planoAulaRoutes(app: FastifyInstance) {
     },
   };
 
-
-
-
   app.post("/planoAula", { schema: createPlanoAulaSchema }, create);
   app.post("/planoAula/gerar", { schema: gerarPlanoAulaSchema }, gerarPlanoAula);
+  app.get("/planoAula/usuario/:usuarioId", { schema: { tags: ['Plano Aula'] } }, findPlanoAulaByUsuario);
 
    
   app.setErrorHandler((error, request, reply) => {

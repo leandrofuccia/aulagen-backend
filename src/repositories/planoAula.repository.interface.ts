@@ -24,6 +24,15 @@ export interface IPlanoAulaRepository {
     atividades: IAtividade[],
     usuarioId: number
   ): Promise<PlanoAula>;
+
+
+  findPlanoAulaByUsuarioid(
+    usuarioId: number,
+    page: number,
+    limit: number
+  ): Promise<{ data: PlanoAula[]; total: number }>;
+
+
 }
 
 export { IPlanoAula };

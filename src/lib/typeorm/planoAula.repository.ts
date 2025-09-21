@@ -114,6 +114,22 @@ export class PlanoAulaRepository implements IPlanoAulaRepository {
 
     return planoSalvo;
   }
+
+  async findPlanoAulaByUsuarioid(
+  usuarioId: number,
+  page: number = 1,
+  limit: number = 10
+): Promise<{ data: PlanoAula[]; total: number }> {
+  const [data, total] = await this.planoRepo.findAndCount({
+    where: { criador: { id: usuarioId } },
+    relations: ["habilidade_bncc", "aulas"],
+    order: { id: "DESC" },
+    skip: (page - 1) * limit,
+    take: limit,
+  });
+
+  return { data, total };
+}
 }
 
 
