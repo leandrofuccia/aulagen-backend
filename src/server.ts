@@ -9,12 +9,13 @@ async function startServer() {
     console.log('Database initialized.');
 
     // Define porta e host a partir do arquivo .env
-    const port = env.PORT || 3002;
+    const port = env.PORT || 3001;
     const host = "0.0.0.0"; // Use "0.0.0.0" para aceitar conexões externas
 
     // Inicia o servidor
     //app.listen({ port, host }, (err, address) => {
-    app.listen({ host: '0.0.0.0', port: 3001 }, (err, address) => {
+    //app.listen({ host: '0.0.0.0', port: 3001 }, (err, address) => {
+    app.listen({ host: host, port: port }, (err, address) => {
       if (err) {
         console.error('Error starting server:', err);
         process.exit(1);
