@@ -39,6 +39,9 @@ export class Atividade {
   @Column({ name: 'descricao', type: 'text', nullable: true })
   descricao: string;
 
+  @Column({ name: 'numero_aula', type: 'text', nullable: true })
+  numero_aula: number;
+
   @ManyToOne(() => Aula, (aula) => aula.atividades, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'aula_id' })
   aula: Aula;
