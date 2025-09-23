@@ -37,6 +37,20 @@ export class HabilidadeBNCCRepository implements IHabilidadeBNCCRepository{
         );
     }
 
-
+    findHabilidadeBncc(): Promise<IHabilidadeBNCC[]> {
+        return this.repository.find({
+        }).then((habilidades) =>
+            habilidades.map((h) => ({
+            id: h.id,
+            codigo: h.codigo,
+            descricao: h.descricao,
+            etapa_ensino: h.etapaEnsino,
+            componente_curricular: h.componenteCurricular,
+            ano_serie: h.anoSerie,
+            versao: h.versao,
+            status: h.status,
+            }))
+        );
+    }
 
 }

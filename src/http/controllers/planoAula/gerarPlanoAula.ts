@@ -1009,10 +1009,22 @@ export async function gerarPlanoAula(request: FastifyRequest, reply: FastifyRepl
     //await planoRepo.createWithRelations(planoAula, aulas, atividades, usuarioId);
 
     const createPlanoAulaUseCase = makeCreatePlanoAulalUseCase();
-    await createPlanoAulaUseCase.handlerWithRelations(planoAula, aulas, atividades, usuarioId);
+    const planoSalvo = await createPlanoAulaUseCase.handlerWithRelations(planoAula, aulas, atividades, usuarioId);
 
 
-    return reply.status(200).send({ planoAula, aulas, atividades });
+    //return reply.status(200).send({ planoAula, aulas, atividades });
+    return reply.status(200).send({
+      planoAula: {
+        ...planoSalvo,
+        detalhes_plano_completo: planoAula.detalhes_plano_completo,
+        recursos_gerais: planoAula.recursos_gerais,
+        avaliacao: planoAula.avaliacao,
+        habilidade_bncc: planoAula.habilidade_bncc,
+      },
+      aulas,
+      atividades,
+    });
+
   } catch (err: any) {
     console.error("Erro ao gerar plano de aula:", err.message);
     return reply.status(500).send({

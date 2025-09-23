@@ -32,6 +32,16 @@ export interface IPlanoAulaRepository {
     limit: number
   ): Promise<{ data: PlanoAula[]; total: number }>;
 
+  
+  findPlanoAulaSearchByUsuarioid(
+        usuarioId: number,
+        search: string, // O termo de busca é obrigatório neste método
+        page: number,
+        limit: number,
+    ): Promise<{ data: PlanoAula[], total: number }> ;
+
+
+  findPlanoAulaById( planoAulaId: number ): Promise<{ data: PlanoAula }>;
 
 }
 

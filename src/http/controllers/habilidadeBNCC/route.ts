@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { FastifyInstance } from "fastify";
 import { findHabilidadeBNCCByAnoComponente } from "./find-habilidadeBNCC-By-AnoComponenteId";
+import { findHabilidadeBNCC } from "./find-habilidadeBNCC";
 
 export async function habilidadeBNCCRoutes(app: FastifyInstance) {
   const habilidadeSchema = z.object({
@@ -32,4 +33,7 @@ export async function habilidadeBNCCRoutes(app: FastifyInstance) {
     { schema: findSchema },
     findHabilidadeBNCCByAnoComponente
   );
+
+
+  app.get("/habilidade", { schema: { tags: ['Habilidade BNCC'] } }, findHabilidadeBNCC);
 }

@@ -7,6 +7,8 @@ import { z } from "zod";
 import { gerarPlanoAula } from "./gerarPlanoAula";
 import { atividadeOutputSchema, aulaOutputSchema, planoAulaOutputSchema } from "./schemas";
 import { findPlanoAulaByUsuario } from "./findPlanoAulaByUsuario";
+import { FindPlanoAulaSearchByUsuario } from "./findPlanoAulaSearchByUsuarioId";
+import { findPlanoAulaById } from "./findPlanoAulaById";
 
 export async function planoAulaRoutes(app: FastifyInstance) {
     
@@ -52,9 +54,37 @@ export async function planoAulaRoutes(app: FastifyInstance) {
     },
   };
 
+  
+  const requestQuerySchema = {
+    tags: ["Plano Aula"], 
+      querystring: z.object({
+      search: z.string(),
+      page: z.coerce.number().optional().default(1),
+      limit: z.coerce.number().optional().default(10),
+    }),
+   response: {
+    200: z.object({
+      planos: z.array(z.any()), // Permite qualquer tipo dentro do array de planos
+      meta: z.object({
+        total: z.number(),
+        pageNumber: z.number(),
+        limitNumber: z.number(),
+        totalPages: z.number(),
+      }),
+    }),
+    500: z.object({
+      message: z.string(),
+    }),
+  },
+};
+  
+  
+
   app.post("/planoAula", { schema: createPlanoAulaSchema }, create);
   app.post("/planoAula/gerar", { schema: gerarPlanoAulaSchema }, gerarPlanoAula);
   app.get("/planoAula/usuario/:usuarioId", { schema: { tags: ['Plano Aula'] } }, findPlanoAulaByUsuario);
+  app.get("/planoAula/search/usuario/:usuarioId", { schema: requestQuerySchema }, FindPlanoAulaSearchByUsuario);
+  app.get("/planoAula/:planoAulaId", { schema: { tags: ['Plano Aula'] } }, findPlanoAulaById);
 
    
   app.setErrorHandler((error, request, reply) => {
