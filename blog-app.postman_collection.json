@@ -24,12 +24,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3002/usuario",
+							"raw": "http://localhost:3001/usuario",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3002",
+							"port": "3001",
 							"path": [
 								"usuario"
 							]
@@ -48,12 +48,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/posts/usuario/1?page=1&limit=10",
+							"raw": "http://localhost:3001/posts/usuario/1?page=1&limit=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3002",
+							"port": "3001",
 							"path": [
 								"posts",
 								"usuario",
@@ -88,12 +88,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3002/post",
+							"raw": "http://localhost:3001/post",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3002",
+							"port": "3001",
 							"path": [
 								"post"
 							]
@@ -116,12 +116,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3002/posts/3",
+							"raw": "http://localhost:3001/posts/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3002",
+							"port": "3001",
 							"path": [
 								"posts",
 								"3"
@@ -136,12 +136,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/posts/5",
+							"raw": "http://localhost:3001/posts/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3002",
+							"port": "3001",
 							"path": [
 								"posts",
 								"5"
@@ -164,12 +164,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/posts/search/search?page=1&limit=10",
+							"raw": "http://localhost:3001/posts/search/search?page=1&limit=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3002",
+							"port": "3001",
 							"path": [
 								"posts",
 								"search",

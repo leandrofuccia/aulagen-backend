@@ -14,7 +14,7 @@ dotenv.config({ path: envPath });
 
 const testDefaults = {
   NODE_ENV: "test",
-  PORT: 3002,
+  PORT: 3001,
   DATABASE_USER: "test_user",
   DATABASE_HOST: "localhost",
   DATABASE_NAME: ":memory:", 
@@ -38,7 +38,7 @@ const environment =
  
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production", "test"]),
-  PORT: z.coerce.number().default(3002),
+  PORT: z.coerce.number().default(3001),
   DATABASE_USER: z.string().optional(),
   DATABASE_HOST: z.string().optional(),
   DATABASE_NAME: z.string(),

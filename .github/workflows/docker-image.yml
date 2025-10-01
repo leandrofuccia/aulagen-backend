@@ -33,7 +33,7 @@ jobs:
 
       - name: Configurar variáveis de ambiente
         env:
-          PORT: 3002
+          PORT: 3001
           NODE_ENV: test
           DATABASE_USER: aulagendb
           DATABASE_HOST: db

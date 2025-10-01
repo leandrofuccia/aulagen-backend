@@ -7,7 +7,7 @@ describe('Env Configuration', () => {
     jest.resetModules(); 
     process.env = { ...process.env, 
       NODE_ENV: 'test',
-      PORT: '3002',
+      PORT: '3001',
       DATABASE_USER: 'test_user',
       DATABASE_HOST: 'localhost',
       DATABASE_NAME: ':memory:',
@@ -23,7 +23,7 @@ describe('Env Configuration', () => {
     const { env } = await import('@/env'); 
 
     expect(env.NODE_ENV).toBe('test');
-    expect(env.PORT).toBe(3002);
+    expect(env.PORT).toBe(3001);
     expect(env.DATABASE_USER).toBe('test_user');
     expect(env.DATABASE_HOST).toBe('localhost');
     expect(env.DATABASE_NAME).toBe(':memory:');

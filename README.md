@@ -177,7 +177,7 @@ Antes de subir os serviços com docker-compose, crie a rede compartilhada:
 1. Acesse a aplicação no navegador:
 
    ```
-   http://localhost:3002/docs
+   http://localhost:3001/docs
    ```
 2. Use o Swagger UI para testar os endpoints disponíveis, como:
 
@@ -197,7 +197,7 @@ docker compose down
 
 ## Guia de Uso das APIs
 
-Este guia tem como objetivo orientar o uso das APIs disponibilizadas pelo sistema de blogging dinâmico. As APIs estarão disponíveis após Setup Inicial no endereço: [http://localhost:3002/docs](http://localhost:3002/docs), onde será possível visualizar a documentação e testar as rotas.
+Este guia tem como objetivo orientar o uso das APIs disponibilizadas pelo sistema de blogging dinâmico. As APIs estarão disponíveis após Setup Inicial no endereço: [http://localhost:3001/docs](http://localhost:3001/docs), onde será possível visualizar a documentação e testar as rotas.
 
 ### Passos para Utilizar o Sistema:
 

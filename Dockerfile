@@ -16,6 +16,6 @@ RUN chmod +x /usr/src/app/wait-for-it.sh
 
 RUN npm run build
 
-EXPOSE 3002
+EXPOSE 3001
 
 CMD ["node", "build/server.cjs"]
