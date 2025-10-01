@@ -24,7 +24,6 @@ services:
   db:
     build:
       context: .
-      dockerfile: Dockerfile.db
     image: postgres:latest
     container_name: postgres_aulagen_db
     environment:
