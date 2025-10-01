@@ -406,7 +406,7 @@ export async function seedHabilidadeBNCCTableOrm() {
     { codigo: "EF08MA04", descricao: "Interpretar e construir gráficos e tabelas para representar dados estatísticos.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "8º ano", versao: "2025" },
     { codigo: "EF08MA05", descricao: "Compreender conceitos de geometria plana e espacial, identificando propriedades e relações entre figuras.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "8º ano", versao: "2025" },
 
-    
+        
     { codigo: "EF08CI01", descricao: "Compreender os processos de transformação da matéria e suas implicações no cotidiano.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Ciências", anoSerie: "8º ano", versao: "2025" },
     { codigo: "EF08CI02", descricao: "Investigar os sistemas do corpo humano e suas interações com o ambiente.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Ciências", anoSerie: "8º ano", versao: "2025" },
     { codigo: "EF08CI03", descricao: "Compreender os ciclos naturais e suas relações com os seres vivos.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Ciências", anoSerie: "8º ano", versao: "2025" },
