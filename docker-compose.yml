@@ -15,6 +15,8 @@ services:
       DATABASE_PASSWORD: sua_senha_segura
       DATABASE_PORT: 5432
       JWT_SECRET: sua_chave_secreta
+      GEMINI_API_KEY: 
+      GEMINI_API_IP: 172.217.162.170
     depends_on:
       - db
     command: "bash ./wait-for-it.sh db:5432 -- node build/server.cjs"

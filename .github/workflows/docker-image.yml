@@ -41,6 +41,8 @@ jobs:
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
           DATABASE_PORT: 5432
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_IP: ${{ secrets.GEMINI_API_IP }}
         run: echo "variáveis de ambiente configuradas!"
 
       - name: Criar variável de timestamp
