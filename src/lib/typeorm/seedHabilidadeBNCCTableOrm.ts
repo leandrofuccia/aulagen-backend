@@ -248,15 +248,8 @@ export async function seedHabilidadeBNCCTableOrm() {
     { codigo: "EF05MA03", descricao: "Identificar e representar frações equivalentes e comparar frações com o mesmo denominador.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "5º ano", versao: "2025" },
     { codigo: "EF05MA04", descricao: "Utilizar medidas de tempo, comprimento, massa, capacidade e temperatura em situações do cotidiano.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "5º ano", versao: "2025" },
     { codigo: "EF05MA05", descricao: "Ler, interpretar e construir tabelas e gráficos de colunas, barras e linhas.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "5º ano", versao: "2025" },
-
     
-    { codigo: "EF05MA01", descricao: "Resolver e elaborar problemas envolvendo as quatro operações com números naturais e com números racionais na forma decimal.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "5º ano", versao: "2025" },
-    { codigo: "EF05MA02", descricao: "Compreender e utilizar o sistema de numeração decimal para leitura, escrita, ordenação e comparação de números até 100.000.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "5º ano", versao: "2025" },
-    { codigo: "EF05MA03", descricao: "Identificar e representar frações equivalentes e comparar frações com o mesmo denominador.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "5º ano", versao: "2025" },
-    { codigo: "EF05MA04", descricao: "Utilizar medidas de tempo, comprimento, massa, capacidade e temperatura em situações do cotidiano.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "5º ano", versao: "2025" },
-    { codigo: "EF05MA05", descricao: "Ler, interpretar e construir tabelas e gráficos de colunas, barras e linhas.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Matemática", anoSerie: "5º ano", versao: "2025" },
-
-   
+      
     { codigo: "EF05CI01", descricao: "Investigar os diferentes tipos de energia e suas transformações.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Ciências", anoSerie: "5º ano", versao: "2025" },
     { codigo: "EF05CI02", descricao: "Compreender os processos de digestão, respiração, circulação e excreção no corpo humano.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Ciências", anoSerie: "5º ano", versao: "2025" },
     { codigo: "EF05CI03", descricao: "Identificar os principais órgãos dos sentidos e suas funções.", etapaEnsino: "Ensino Fundamental", componenteCurricular: "Ciências", anoSerie: "5º ano", versao: "2025" },
