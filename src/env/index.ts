@@ -5,9 +5,9 @@ import { z } from "zod";
 const nodeEnvAux = process.env.NODE_ENV;
 
 // Limpa todas as variáveis de ambiente previamente definidas para evitar conflitos
-if (nodeEnvAux !== "test" ) {
+/*if (nodeEnvAux !== "test" ) {
   Object.keys(process.env).forEach((key) => { delete process.env[key]; });
-}
+}*/
 
 const envPath = path.resolve(process.cwd(), './.env');
 dotenv.config({ path: envPath });
@@ -50,6 +50,7 @@ const envSchema = z.object({
 });
 
 const _env = envSchema.safeParse(environment);
+console.log('_env index.ts', _env)
 
 if (!_env.success) {
   console.error("Variáveis de ambiente inválidas:", _env.error.format());
