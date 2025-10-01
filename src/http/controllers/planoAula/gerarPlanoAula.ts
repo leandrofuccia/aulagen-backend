@@ -900,7 +900,7 @@ const bodySchema = z.object({
 
 function montarPrompt({ codigo_BNCC, componente_Curricular, serie, duracao_aula }: any): string {
   return [
-    "Elaborar um plano de aula detalhado com base na BNCC para professores de escolas públicas.",
+    "Elaborar um plano de aula detalhado com base na BNCC sem redundâncias desnecessárias para professores de escolas públicas.",
     "**Informações:**",
     `- **Código BNCC:** ${codigo_BNCC}`,
     `- **Componente Curricular:** ${componente_Curricular}`,

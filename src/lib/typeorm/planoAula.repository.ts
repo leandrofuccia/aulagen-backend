@@ -35,6 +35,7 @@ import { Usuario } from "@/entities/usuario.entity";
 import { IPlanoAula } from "@/entities/models/planoAula.interface";
 import { IAula } from "@/entities/models/aula.interface";
 import { IAtividade } from "@/entities/models/atividade.interface";
+import { UpdatePlanoAulaInput } from "@/dtos/updatePlanoAula.dto";
 
 export class PlanoAulaRepository implements IPlanoAulaRepository {
   private planoRepo: Repository<PlanoAula>;
@@ -275,8 +276,96 @@ export class PlanoAulaRepository implements IPlanoAulaRepository {
     return { data };
   }
 
-   
+
+  async delete (id: number): Promise<void>{
+        await this.planoRepo.delete(id)
+  }
+
+
+  
+  async updateWithRelations(
+    planoId: number,
+    dto: UpdatePlanoAulaInput
+  ): Promise<PlanoAula> {
+    // 1. Buscar plano existente com relações
+    const plano = await this.planoRepo.findOne({
+      where: { id: planoId },
+      relations: ["aulas", "aulas.atividades"],
+    });
+
+    if (!plano) {
+      throw new Error("Plano de aula não encontrado");
+    }
+
+    // 2. Atualizar dados básicos do plano
+    if (dto.titulo !== undefined) plano.titulo = dto.titulo;
+    if (dto.descricao !== undefined)
+      plano.detalhes_plano_completo = dto.descricao;
+    if (dto.recursos_gerais !== undefined)
+      plano.recursos_gerais = dto.recursos_gerais;
+    if (dto.duracao_total !== undefined)
+      plano.duracao_total = dto.duracao_total;
+    if (dto.avaliacao !== undefined) plano.avaliacao = dto.avaliacao;
+    if (dto.detalhes_plano_completo !== undefined)
+      plano.detalhes_plano_completo = dto.detalhes_plano_completo;
+
+    // 3. Atualizar aulas existentes
+    if (dto.aulas) {
+      for (const aulaDto of dto.aulas) {
+        const aula = plano.aulas.find((a) => a.id === aulaDto.id);
+
+        if (!aula) {
+          throw new Error(
+            `Aula com id ${aulaDto.id} não encontrada neste plano`
+          );
+        }
+
+        // Atualiza aula
+        if (aulaDto.numero_aula !== undefined)
+          aula.numero_aula = aulaDto.numero_aula;
+        if (aulaDto.titulo !== undefined) aula.titulo = aulaDto.titulo;
+        if (aulaDto.objetivo !== undefined) aula.objetivo = aulaDto.objetivo;
+        if (aulaDto.duracao !== undefined) aula.duracao = aulaDto.duracao;
+
+        // 4. Atualizar atividades da aula
+        if (aulaDto.atividades) {
+          for (const atividadeDto of aulaDto.atividades) {
+            const atividade = aula.atividades.find(
+              (atv) => atv.id === atividadeDto.id
+            );
+
+            if (!atividade) {
+              throw new Error(
+                `Atividade com id ${atividadeDto.id} não encontrada na aula ${aula.id}`
+              );
+            }
+
+            if (atividadeDto.etapa !== undefined)
+              atividade.etapa = atividadeDto.etapa;
+            if (atividadeDto.tempo !== undefined)
+              atividade.tempo = atividadeDto.tempo;
+            if (atividadeDto.descricao !== undefined)
+              atividade.descricao = atividadeDto.descricao;
+            if (atividadeDto.numero_aula !== undefined)
+              atividade.numero_aula = atividadeDto.numero_aula;
+          }
+        }
+      }
+    }
+
+    // 5. Salvar alterações
+    return await this.planoRepo.save(plano);
+  }
 }
+
+
+
+
+
+
+
+   
+
 
 
 

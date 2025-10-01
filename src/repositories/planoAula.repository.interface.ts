@@ -12,6 +12,8 @@ import { IPlanoAula } from "@/entities/models/planoAula.interface";
 import { IAula } from "@/entities/models/aula.interface";
 import { IAtividade } from "@/entities/models/atividade.interface";
 import { PlanoAula } from "@/entities/planoAula.entity";
+import { UpdatePlanoAulaInput } from "@/dtos/updatePlanoAula.dto";
+
 
 export interface IPlanoAulaRepository {
   // Método original (se ainda for usado em outro lugar)
@@ -42,6 +44,8 @@ export interface IPlanoAulaRepository {
 
 
   findPlanoAulaById( planoAulaId: number ): Promise<{ data: PlanoAula }>;
+  delete (id: number): Promise<void>;
+  updateWithRelations(planoId: number,dto: UpdatePlanoAulaInput): Promise<PlanoAula> 
 
 }
 

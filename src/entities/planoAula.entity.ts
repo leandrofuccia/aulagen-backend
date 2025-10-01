@@ -104,6 +104,6 @@ export class PlanoAula {
   @JoinColumn({ name: 'criador_id' })
   criador: Usuario;
 
-  @OneToMany(() => Aula, (aula) => aula.planoAula)
+  @OneToMany(() => Aula, (aula) => aula.planoAula , { cascade: true, eager: true })
   aulas: Aula[];
 }

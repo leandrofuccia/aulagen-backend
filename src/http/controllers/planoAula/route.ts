@@ -9,6 +9,9 @@ import { atividadeOutputSchema, aulaOutputSchema, planoAulaOutputSchema } from "
 import { findPlanoAulaByUsuario } from "./findPlanoAulaByUsuario";
 import { FindPlanoAulaSearchByUsuario } from "./findPlanoAulaSearchByUsuarioId";
 import { findPlanoAulaById } from "./findPlanoAulaById";
+import { deletePlanoAula } from "./delete";
+import { update } from "../usuario/update";
+import { updatePlanoAula } from "./updatePlanoAula.controller";
 
 export async function planoAulaRoutes(app: FastifyInstance) {
     
@@ -77,7 +80,52 @@ export async function planoAulaRoutes(app: FastifyInstance) {
     }),
   },
 };
-  
+
+
+const updatePlanoAulaSchema = {
+  tags: ["Plano Aula"],
+  // só o parametro do plano de aula — sem usuarioId
+  params: z.object({
+    planoAulaId: z.coerce.number(), // força conversão para number
+  }),
+  body: z.object({
+    titulo: z.string().optional(),
+    duracao_total: z.string().optional(),
+    recursos_gerais: z.array(z.string()).optional(),
+    detalhes_plano_completo: z.string().optional(),
+    avaliacao: z.string().optional(),
+    aulas: z
+      .array(
+        z.object({
+          id: z.number().optional(),
+          numero_aula: z.number().optional(),
+          titulo: z.string().optional(),
+          objetivo: z.string().optional(),
+          duracao: z.string().optional(),
+          atividades: z
+            .array(
+              z.object({
+                id: z.number().optional(),
+                etapa: z.string().optional(),
+                tempo: z.string().optional(),
+                descricao: z.string().optional(),
+              })
+            )
+            .optional(),
+        })
+      )
+      .optional(),
+  }),
+  response: {
+    200: z.object({
+      message: z.string(),
+      planoAula: z.any(),
+    }),
+    400: z.object({
+      message: z.string(),
+    }),
+  },
+};
   
 
   app.post("/planoAula", { schema: createPlanoAulaSchema }, create);
@@ -85,6 +133,8 @@ export async function planoAulaRoutes(app: FastifyInstance) {
   app.get("/planoAula/usuario/:usuarioId", { schema: { tags: ['Plano Aula'] } }, findPlanoAulaByUsuario);
   app.get("/planoAula/search/usuario/:usuarioId", { schema: requestQuerySchema }, FindPlanoAulaSearchByUsuario);
   app.get("/planoAula/:planoAulaId", { schema: { tags: ['Plano Aula'] } }, findPlanoAulaById);
+  app.delete('/planoAula/:planoAulaId', { schema: { tags: ['Plano Aula'] } }, deletePlanoAula);
+  app.put('/planoAula/:planoAulaId', { schema: updatePlanoAulaSchema }, updatePlanoAula)
 
    
   app.setErrorHandler((error, request, reply) => {
