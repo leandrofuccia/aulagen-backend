@@ -1,5 +1,5 @@
 {
-  "name": "blog-app",
+  "name": "aulagen_app",
   "version": "1.0.0",
   "type": "module",
   "main": "src/build/server.js",
@@ -21,7 +21,7 @@
     "@fastify/swagger-ui": "5.2.2",
     "axios": "1.12.2",
     "bcryptjs": "3.0.2",
-    "blog-app": "file:",
+    "aulagen_app": "file:",
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",

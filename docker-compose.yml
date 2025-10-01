@@ -3,7 +3,7 @@ services:
     build:
       context: .
     container_name: aulagen_app
-    image: leandrofuccia/blog-app:${TIMESTAMP:-latest}
+    image: leandrofuccia/aulagen_app:${TIMESTAMP:-latest}
     ports:
       - "3002:3002"
     environment:

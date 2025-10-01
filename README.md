@@ -135,16 +135,16 @@ docker compose version
 
 #### **2. Baixando a Imagem do Docker Hub**
 
-A imagem da aplicação está disponível no repositório do Docker Hub [leandrofuccia/blog-app](https://hub.docker.com/r/leandrofuccia/blog-app).
+A imagem da aplicação está disponível no repositório do Docker Hub [leandrofuccia/aulagen_app](https://hub.docker.com/r/leandrofuccia/aulagen_app).
 
 1. Execute o seguinte comando para baixar a última versão da imagem:
    ```bash
-   docker pull leandrofuccia/blog-app:latest
+   docker pull leandrofuccia/aulagen_app:latest
    ```
 
 #### **3. Baixando o Arquivo Docker Compose**
 
-O arquivo [docker-compose.yml](https://raw.githubusercontent.com/leandrofuccia/blog-app/refs/heads/main/docker-compose.yml) está disponível no repositório do GitHub [leandrofuccia/blog-app](https://github.com/leandrofuccia/blog-app). Faça o download em uma pasta local.
+O arquivo [docker-compose.yml](https://raw.githubusercontent.com/leandrofuccia/aulagen_app/refs/heads/main/docker-compose.yml) está disponível no repositório do GitHub [leandrofuccia/aulagen_app](https://github.com/leandrofuccia/aulagen_app). Faça o download em uma pasta local.
 
 #### **4. Criando a rede compartilhada**
 

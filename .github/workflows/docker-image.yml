@@ -66,10 +66,10 @@ jobs:
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Push da imagem para o Docker Hub
-        run: docker push leandrofuccia/blog-app:${{ env.TIMESTAMP }}
+        run: docker push leandrofuccia/aulagen_app:${{ env.TIMESTAMP }}
       
       - name: Adicionar tag latest à imagem
-        run: docker tag leandrofuccia/blog-app:${{ env.TIMESTAMP }} leandrofuccia/blog-app:latest; docker push leandrofuccia/blog-app:latest
+        run: docker tag leandrofuccia/aulagen_app:${{ env.TIMESTAMP }} leandrofuccia/aulagen_app:latest; docker push leandrofuccia/aulagen_app:latest
 
       - name: Encerra os containers do docker compose
         if: always()
