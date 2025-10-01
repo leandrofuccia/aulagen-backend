@@ -1,5 +1,9 @@
+import { Atividade } from "@/entities/atividade.entity";
+import { Aula } from "@/entities/aula.entity";
 import { Credencial } from "@/entities/credencial.entity";
+import { HabilidadeBNCC } from "@/entities/habilidadeBNCC.entity";
 import { Ocupacao } from "@/entities/ocupacao.entity";
+import { PlanoAula } from "@/entities/planoAula.entity";
 import { Usuario } from "@/entities/usuario.entity";
 import { appDataSource } from "@/lib/typeorm/typeorm";
 import { UsuarioRepository } from "@/lib/typeorm/usuario.repository";
@@ -11,7 +15,7 @@ beforeAll(async () => {
     type: 'sqlite',
     database: ':memory:',
     dropSchema: true,
-    entities: [Credencial, Usuario, Ocupacao], 
+    entities: [Credencial, Usuario, Ocupacao, HabilidadeBNCC, PlanoAula, Aula, Atividade], 
     synchronize: false,
     logging: false,
   });
@@ -40,7 +44,7 @@ afterAll(async () => {
 describe('UsuarioRepository', () => {
   it('deve criar um usuário', async () => {
 
-    const ocupacaoRepository = appDataSource.getRepository(ocupacao);
+    const ocupacaoRepository = appDataSource.getRepository(Ocupacao);
       const ocupacao = await ocupacaoRepository.save({
       id: 2,
       ocupacao: "Professor",
@@ -67,7 +71,7 @@ describe('UsuarioRepository', () => {
 
   it('deve encontrar um usuário pelo ID', async () => {
   
-    const ocupacaoRepository = appDataSource.getRepository(ocupacao);
+    const ocupacaoRepository = appDataSource.getRepository(Ocupacao);
       const ocupacao = await ocupacaoRepository.save({
       id: 2,
       ocupacao: "Professor",
@@ -100,7 +104,7 @@ describe('UsuarioRepository', () => {
 
   it('deve encontrar usuário por credencial ID', async () => {
     
-    const ocupacaoRepository = appDataSource.getRepository(ocupacao);
+    const ocupacaoRepository = appDataSource.getRepository(Ocupacao);
       const ocupacao = await ocupacaoRepository.save({
       id: 2,
       ocupacao: "Professor",
@@ -127,7 +131,7 @@ describe('UsuarioRepository', () => {
 
   it('deve encontrar um usuário pelo nome', async () => {
     
-    const ocupacaoRepository = appDataSource.getRepository(ocupacao);
+    const ocupacaoRepository = appDataSource.getRepository(Ocupacao);
       const ocupacao = await ocupacaoRepository.save({
       id: 2,
       ocupacao: "Professor",

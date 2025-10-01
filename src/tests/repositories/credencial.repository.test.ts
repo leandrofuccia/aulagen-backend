@@ -1,5 +1,9 @@
+import { Atividade } from "@/entities/atividade.entity";
+import { Aula } from "@/entities/aula.entity";
 import { Credencial } from "@/entities/credencial.entity";
+import { HabilidadeBNCC } from "@/entities/habilidadeBNCC.entity";
 import { Ocupacao } from "@/entities/ocupacao.entity";
+import { PlanoAula } from "@/entities/planoAula.entity";
 import { Usuario } from "@/entities/usuario.entity";
 import { CredencialRepository } from "@/lib/typeorm/credencial.repository";
 import { appDataSource } from "@/lib/typeorm/typeorm";
@@ -11,7 +15,7 @@ beforeAll(async () => {
     type: 'sqlite',
     database: ':memory:',
     dropSchema: true,
-    entities: [Credencial, Usuario, Ocupacao], 
+    entities: [Credencial, Usuario, Ocupacao, HabilidadeBNCC, PlanoAula, Aula, Atividade], 
     synchronize: false,
     logging: false,
   });

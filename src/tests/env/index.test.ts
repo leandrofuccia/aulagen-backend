@@ -14,6 +14,8 @@ describe('Env Configuration', () => {
       DATABASE_PASSWORD: '',
       DATABASE_PORT: '',
       JWT_SECRET: 'test_secret',
+      GEMINI_API_KEY:'teste api key',
+      GEMINI_API_IP:'0.0.0.0'
     };
   });
 
