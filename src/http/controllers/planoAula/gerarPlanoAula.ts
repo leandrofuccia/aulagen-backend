@@ -890,12 +890,19 @@ import { IPlanoAula } from "@/entities/models/planoAula.interface";
 import { IAula } from "@/entities/models/aula.interface";
 import { IAtividade } from "@/entities/models/atividade.interface";
 import { makeCreatePlanoAulalUseCase } from "@/use-cases/factory/make-create-plano-use-case";
+import { findUsuarioByCredencialId } from "../usuario/find-Usuario-By-CredencialId";
+import { FindUsuarioByCredencialUseCase } from "@/use-cases/find-usuario-by-credencial";
+import { InvalidUsuarioError } from "@/use-cases/errors/invalid-usuario-error";
+import { makeCreateCredencialUseCase } from "@/use-cases/factory/make-create-credencial-use-case";
+import { makeFindUsuarioByCredencialUseCase } from "@/use-cases/factory/make-find-usuario-by-credencial";
+import { unauthorizedPerfilError } from "@/use-cases/errors/unauthorized-perfil-error";
 
 const bodySchema = z.object({
   codigo_BNCC: z.string().min(5, "Código BNCC obrigatório."),
   componente_Curricular: z.string().min(3, "Componente Curricular obrigatório."),
   serie: z.string().min(2, "Série obrigatória."),
   duracao_aula: z.string().min(2, "Duração da aula obrigatória."),
+  credencialId: z.coerce.number(),
 });
 
 function montarPrompt({ codigo_BNCC, componente_Curricular, serie, duracao_aula }: any): string {
@@ -945,12 +952,33 @@ function montarPrompt({ codigo_BNCC, componente_Curricular, serie, duracao_aula 
 
 export async function gerarPlanoAula(request: FastifyRequest, reply: FastifyReply) {
   const parse = bodySchema.safeParse(request.body);
+  
+  console.log('gerarPlanoAula parse.data ', parse.data);
   if (!parse.success) {
     const errMsg = parse.error.errors.map((e) => e.message).join("; ");
     return reply.status(400).send({ message: `Erro de validação: ${errMsg}` });
   }
 
-  const { codigo_BNCC, componente_Curricular, serie, duracao_aula } = parse.data;
+  
+
+  const { codigo_BNCC, componente_Curricular, serie, duracao_aula, credencialId } = parse.data;
+
+  console.log('gerarPlanoAula credencialId', credencialId)
+  
+  const findUsuarioByCredencialIdUseCase = makeFindUsuarioByCredencialUseCase();
+  const usuario = await findUsuarioByCredencialIdUseCase.handler(credencialId);
+    
+  if (!usuario || (usuario).length === 0){
+      throw new InvalidUsuarioError()
+  } 
+   
+  if (usuario[0].ocupacaoid !== 2) {
+      throw new unauthorizedPerfilError()
+        
+  }
+  const usuarioId = usuario[0].id;
+  console.log('usuarioId ', usuarioId)  
+  
   const prompt = montarPrompt({ codigo_BNCC, componente_Curricular, serie, duracao_aula });
 
   const aiService = new AiService();
@@ -1004,13 +1032,9 @@ export async function gerarPlanoAula(request: FastifyRequest, reply: FastifyRepl
         numero_aula: act.aula_associada,
       }));
 
-    //const planoRepo = new PlanoAulaRepository();
-    const usuarioId = 1;
-    //await planoRepo.createWithRelations(planoAula, aulas, atividades, usuarioId);
-
+       
     const createPlanoAulaUseCase = makeCreatePlanoAulalUseCase();
-    const planoSalvo = await createPlanoAulaUseCase.handlerWithRelations(planoAula, aulas, atividades, usuarioId);
-
+    const planoSalvo = await createPlanoAulaUseCase.handlerWithRelations(planoAula, aulas, atividades, usuarioId!);
 
     //return reply.status(200).send({ planoAula, aulas, atividades });
     return reply.status(200).send({

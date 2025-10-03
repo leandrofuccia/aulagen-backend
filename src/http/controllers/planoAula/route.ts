@@ -42,6 +42,7 @@ export async function planoAulaRoutes(app: FastifyInstance) {
       componente_Curricular: z.string().min(3, "Componente curricular obrigatório."),
       serie: z.string().min(3, "Série obrigatória."),
       duracao_aula: z.string().min(2, "Duração da aula obrigatória."),
+      credencialId: z.union([z.string(), z.number()]),
     }),
     response: {
       200: z.object({
