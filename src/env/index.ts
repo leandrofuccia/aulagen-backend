@@ -5,10 +5,10 @@ import { z } from "zod";
 const nodeEnvAux = process.env.NODE_ENV;
 
 // Limpa todas as variáveis de ambiente previamente definidas para evitar conflitos
-if (nodeEnvAux !== "test" ) {
+/*if (nodeEnvAux !== "test" ) {
   Object.keys(process.env).forEach((key) => { delete process.env[key]; });
 }
-
+*/
 const envPath = path.resolve(process.cwd(), './.env');
 dotenv.config({ path: envPath });
 
