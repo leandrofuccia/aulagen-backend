@@ -1,12 +1,3 @@
-/*export interface UpdateAtividadeDto {
-  id: number;
-  etapa?: string;
-  tempo?: string;
-  descricao?: string;
-  numero_aula?: number;
-}*/
-
-
 import { z } from "zod";
 
 export const updateAtividadeSchema = z.object({

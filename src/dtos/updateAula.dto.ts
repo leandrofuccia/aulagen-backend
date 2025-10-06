@@ -1,15 +1,3 @@
-/*import { UpdateAtividadeDto } from "./updateAtividade.dto";
-
-export interface UpdateAulaDto {
-  id: number;
-  numero_aula?: number;
-  titulo?: string;
-  objetivo?: string;
-  duracao?: string;
-  atividades?: UpdateAtividadeDto[];
-}
-*/
-
 import { z } from "zod";
 import { updateAtividadeSchema } from "./updateAtividade.dto";
 

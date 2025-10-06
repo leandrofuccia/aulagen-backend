@@ -1,5 +1,4 @@
 import { makeFindPlanoAulaByIdUseCase } from "@/use-cases/factory/make-find-plano-by-Id-use-case"
-import { makeFindPlanoAulaByUsuarioIdUseCase } from "@/use-cases/factory/make-find-plano-by-usuarioId-use-case"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 

@@ -13,9 +13,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 
     const  {titulo, objetivos, atividades, recursos} = registrerBodySchema.parse(request.body)  
     const plano = {titulo,  objetivos, atividades, recursos} 
-    const createPlanoAulaUseCase = makeCreatePlanoAulalUseCase();
-    //const planoAula = await createPlanoAulaUseCase.handler(plano)
-    //return reply.status(201).send({id: planoAula?.id, titulo: planoAula?.id, objetivos: planoAula?.objetivos, atividades: planoAula?.atividades, recursos: planoAula?.recursos})
+    const createPlanoAulaUseCase = makeCreatePlanoAulalUseCase();    
 }
 
 

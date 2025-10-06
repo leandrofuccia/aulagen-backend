@@ -1,7 +1,6 @@
 
 
 import { FastifyInstance } from "fastify";
-import { create } from "./create";
 import { z } from "zod";
 
 import { gerarPlanoAula } from "./gerarPlanoAula";
@@ -14,26 +13,6 @@ import { update } from "../usuario/update";
 import { updatePlanoAula } from "./updatePlanoAula.controller";
 
 export async function planoAulaRoutes(app: FastifyInstance) {
-    
-   
-    const createPlanoAulaSchema = {
-    tags: ["Plano Aula"], 
-    body: z.object({
-      titulo: z.string(),
-      objetivos: z.string(),
-      atividades: z.string(),
-      recursos: z.string(),
-    }),
-    response: {
-      200: z.object({
-        token: z.string(),
-      }),
-      400: z.object({
-        message: z.string(),
-      }),
-    },
-  }
-
   const gerarPlanoAulaSchema = {
     tags: ["Plano Aula"],
     summary: "Gera um plano de aula com base em um prompt textual",
@@ -129,7 +108,6 @@ const updatePlanoAulaSchema = {
 };
   
 
-  app.post("/planoAula", { schema: createPlanoAulaSchema }, create);
   app.post("/planoAula/gerar", { schema: gerarPlanoAulaSchema }, gerarPlanoAula);
   app.get("/planoAula/usuario/:usuarioId", { schema: { tags: ['Plano Aula'] } }, findPlanoAulaByUsuario);
   app.get("/planoAula/search/usuario/:usuarioId", { schema: requestQuerySchema }, FindPlanoAulaSearchByUsuario);

@@ -1,7 +1,4 @@
 
-import { InvalidUsuarioError } from "@/use-cases/errors/invalid-usuario-error"
-import { unauthorizedocupacaoError } from "@/use-cases/errors/unauthorized-ocupacao-error"
-import { makeFindUsuarioByCredencialUseCase } from "@/use-cases/factory/make-find-usuario-by-credencial"
 import { makeUpdateCredencialUseCase } from "@/use-cases/factory/make-update-credencial-use-case"
 import { hash } from "bcryptjs"
 import { FastifyReply, FastifyRequest } from "fastify"

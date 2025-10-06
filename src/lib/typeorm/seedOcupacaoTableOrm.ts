@@ -9,8 +9,7 @@ export async function seedOcupacaoTableOrm() {
     return;
   }
 
-  const perfis = [
-    { id: 1, ocupacao: "Aluno" },
+  const perfis = [    
     { id: 2, ocupacao: "Professor" },
   ];
   await ocupacaoRepository.save(perfis);

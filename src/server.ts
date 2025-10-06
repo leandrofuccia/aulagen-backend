@@ -1,20 +1,14 @@
 import { app } from './app';
 import { initializeDatabase } from './lib/typeorm/typeorm';
-import { env } from './env'; // Certifique-se de importar o env corretamente
-
+import { env } from './env'; 
 async function startServer() {
   try {
-    // Inicializa o banco de dados
     await initializeDatabase();
     console.log('Database initialized.');
 
-    // Define porta e host a partir do arquivo .env
     const port = env.PORT || 3001;
-    const host = "0.0.0.0"; // Use "0.0.0.0" para aceitar conexões externas
+    const host = "0.0.0.0"; 
 
-    // Inicia o servidor
-    //app.listen({ port, host }, (err, address) => {
-    //app.listen({ host: '0.0.0.0', port: 3001 }, (err, address) => {
     app.listen({ host: host, port: port }, (err, address) => {
       if (err) {
         console.error('Error starting server:', err);
@@ -28,5 +22,4 @@ async function startServer() {
   }
 }
 
-// Inicia o servidor
 startServer();
