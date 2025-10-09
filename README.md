@@ -1,4 +1,4 @@
-# Documentação do Hackton - Fase 5
+# Documentação do Hackaton - Fase 5
 
 Atualmente, a maioria dos professores e professoras da rede pública enfrenta grandes desafios para planejar e compartilhar suas aulas de forma prática, centralizada e tecnológica. Para enfrentar essa realidade, desenvolvemos a AulaGen, uma plataforma inteligente que facilita a criação, edição e gestão de planos de aula alinhados à BNCC, integrando recursos modernos e o poder da inteligência artificial.
 
@@ -40,7 +40,7 @@ Nesta etapa do projeto, disponibilizamos uma API robusta com endpoints para cada
   - **GET /planoAula/:planoAulaId-** Retorna o plano de aula através de um id específico.
   - **DELETE /planoAula/:planoAulaId-** Exclui um plano de aula através de um id específico.
   - **PUT /planoAula/:planoAulaId-** Atualiza um plano de aula através de um id específico.
-  - **GET //habilidade-** Lista todas as habiliadades do BNCC registradas na base de dados.
+  - **GET /habilidade-** Lista todas as habiliadades do BNCC registradas na base de dados.
 
 - **Segurança:** Middleware para autenticação (JSON Web Token - JWT).
 
@@ -56,8 +56,8 @@ Estrutura:
 CREATE TABLE public.ocupacao (
 	id int4 NOT NULL,
 	ocupacao varchar NOT NULL,
-	CONSTRAINT "PK_b1c7e62c6a42dc0fd41c516c892" PRIMARY KEY (id),
-	CONSTRAINT "UQ_552a806f13dd0f1908ef760c5fa" UNIQUE (ocupacao)
+	CONSTRAINT "PK_OCUPACAO" PRIMARY KEY (id),
+	CONSTRAINT "UQ_OCUPACAO_OCUPACAO" UNIQUE (ocupacao)
 );
 ```
 
@@ -90,7 +90,7 @@ CREATE TABLE usuario (
 );
 ```
 
-**Tabela plano_aula**: armazena os planos de aula criadas pelos usuários.
+**Tabela plano_aula**: armazena os planos de aula criados pelos usuários.
 
 Estrutura:
 
@@ -104,7 +104,7 @@ CREATE TABLE plano_aula (
 	avaliacao text NULL,
 	habilidade_bncc_id int4 NULL,
 	criador_id int4 NOT NULL,
-	CONSTRAINT "PK_58f01163beba416a0df0c93d923" PRIMARY KEY (id)
+	CONSTRAINT "PK_PLANOAULA" PRIMARY KEY (id)
 );
 ```
 
@@ -120,11 +120,11 @@ CREATE TABLE aula (
 	objetivo text NULL,
 	duracao varchar(50) NOT NULL,
 	plano_aula_id int4 NULL,
-	CONSTRAINT "PK_f4b5d2e277c6146e2572c6ee76a" PRIMARY KEY (id)
+	CONSTRAINT "PK_AULA" PRIMARY KEY (id)
 );
 ```
 
-**Tabela atividade**: armazena todas as atividas relacionadas de cada aula do plano de aula
+**Tabela atividade**: armazena todas as atividades relacionadas de cada aula do plano de aula
 
 Estrutura:
 ```sql
@@ -135,7 +135,7 @@ CREATE TABLE atividade (
 	descricao text NULL,
 	numero_aula text NULL,
 	aula_id int4 NULL,
-	CONSTRAINT "PK_b06f518d68d61a858de079cb1be" PRIMARY KEY (id)
+	CONSTRAINT "PK_ATIVIDADE" PRIMARY KEY (id)
 );
 ```
 
@@ -152,8 +152,8 @@ CREATE TABLE habilidade_bncc (
 	ano_serie varchar NOT NULL,
 	versao varchar NOT NULL,
 	status varchar DEFAULT 'ativa'::character varying NOT NULL,
-	CONSTRAINT "PK_15146113753c75bee8c74e3be7e" PRIMARY KEY (id),
-	CONSTRAINT "UQ_c3866945a88d70aeb34c173e288" UNIQUE (codigo)
+	CONSTRAINT "PK_HABILIDADEBNCC" PRIMARY KEY (id),
+	CONSTRAINT "UQ_HABILIDADEBNCC_CODIGO" UNIQUE (codigo)
 );
 ```
 
