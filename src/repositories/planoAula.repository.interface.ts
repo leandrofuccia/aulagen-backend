@@ -1,13 +1,3 @@
-/*import { IPlanoAula } from "@/entities/models/planoAula.interface"
-
-export interface IPlanoAulaRepository{
-    create (plano_aula: IPlanoAula): Promise<IPlanoAula | undefined>
-}
-
-export { IPlanoAula }
-
-*/
-
 import { IPlanoAula } from "@/entities/models/planoAula.interface";
 import { IAula } from "@/entities/models/aula.interface";
 import { IAtividade } from "@/entities/models/atividade.interface";
@@ -16,11 +6,9 @@ import { UpdatePlanoAulaInput } from "@/dtos/updatePlanoAula.dto";
 
 
 export interface IPlanoAulaRepository {
-  // Método original (se ainda for usado em outro lugar)
   create (plano_aula: IPlanoAula): Promise<IPlanoAula | undefined>
 
-  // Novo método completo com relações
-  createWithRelations(
+   createWithRelations(
     plano: IPlanoAula,
     aulas: IAula[],
     atividades: IAtividade[],
@@ -37,7 +25,7 @@ export interface IPlanoAulaRepository {
   
   findPlanoAulaSearchByUsuarioid(
         usuarioId: number,
-        search: string, // O termo de busca é obrigatório neste método
+        search: string,
         page: number,
         limit: number,
     ): Promise<{ data: PlanoAula[], total: number }> ;

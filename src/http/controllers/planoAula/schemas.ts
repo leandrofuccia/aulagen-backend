@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-// Schema de saída para IPlanoAula
 export const planoAulaOutputSchema = z.object({
   id: z.number().optional(),
   titulo: z.string(),
@@ -13,10 +12,9 @@ export const planoAulaOutputSchema = z.object({
     descricao: z.string(),
   }),
 
-  criador: z.any().optional(),    // ajuste conforme o schema de Usuario
+  criador: z.any().optional(),    
 });
 
-// Schema de saída para IAula
 export const aulaOutputSchema = z.object({
   id: z.number().optional(),
   numero_aula: z.number(),
@@ -24,7 +22,6 @@ export const aulaOutputSchema = z.object({
   objetivo: z.string(),
 });
 
-// Schema de saída para IAtividade
 export const atividadeOutputSchema = z.object({
   id: z.number().optional(),
   etapa: z.string(),

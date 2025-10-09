@@ -47,7 +47,7 @@ export async function planoAulaRoutes(app: FastifyInstance) {
     }),
    response: {
     200: z.object({
-      planos: z.array(z.any()), // Permite qualquer tipo dentro do array de planos
+      planos: z.array(z.any()),
       meta: z.object({
         total: z.number(),
         pageNumber: z.number(),
@@ -64,9 +64,8 @@ export async function planoAulaRoutes(app: FastifyInstance) {
 
 const updatePlanoAulaSchema = {
   tags: ["Plano Aula"],
-  // só o parametro do plano de aula — sem usuarioId
   params: z.object({
-    planoAulaId: z.coerce.number(), // força conversão para number
+    planoAulaId: z.coerce.number(),
   }),
   body: z.object({
     titulo: z.string().optional(),

@@ -15,18 +15,13 @@ export class CredencialRepository implements ICredencialRepository{
         this.repository = appDataSource.getRepository(Credencial)
     }
 
-    /*create(credencial: ICredencial): Promise<ICredencial | undefined> {
-       
-        return this.repository.save(credencial)
-    }
-    */
 
     create(credencial: ICredencial): Promise<ICredencial | undefined> {
         return this.repository.save(credencial).catch((error: any) => {
             if (
-            error.code === "23505" || // PostgreSQL
+            error.code === "23505" ||
             error.message.includes('violates unique')  || 
-            error.message?.includes("duplicate") // SQLite, outros
+            error.message?.includes("duplicate") 
             ) {
                 console.log("entrou no erro error.message", error.message, error.code )
             const duplicateError = new Error("DUPLICATE_USERNAME");
@@ -34,7 +29,7 @@ export class CredencialRepository implements ICredencialRepository{
             throw duplicateError;
             }
              console.log('caiu no throw error.message ', error.message, error.code)
-            throw error; // Repassa outros erros normalmente
+            throw error; 
         });
     }
 

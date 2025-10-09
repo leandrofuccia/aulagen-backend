@@ -3,7 +3,7 @@ export interface IAtividade {
     etapa: string,
     tempo: string,
     descricao: string,
-    numero_aula?: number; // ← adicionado
+    numero_aula?: number;
 
      
 } 

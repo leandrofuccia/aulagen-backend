@@ -71,18 +71,4 @@ app.register(habilidadeBNCCRoutes)
 console.log('Registrando rota 3 /planoAula') 
 app.register(planoAulaRoutes)
 
-/*app.register(fastifyFormbody);
-console.log('Registrando rota 4 /genIA') 
-app.register(genIARoutes)
-*/
-
-/*dns.lookup("generativelanguage.googleapis.com", (err, address) => {
-  if (err) {
-    console.error("❌ DNS falhou dentro do Fastify:", err.message);
-  } else {
-    console.log("✅ DNS resolvido dentro do Fastify:", address);
-  }
-});
-*/
-
 app.setErrorHandler(globalErrorHandler)

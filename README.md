@@ -36,7 +36,7 @@ Nesta etapa do projeto, disponibilizamos uma API robusta com endpoints para cada
   - **GET /usuario/:usuarioId -** Retorna os dados de um usuário específico.
   - **GET /usuario/credencial/:credencialId -** Retorna os dados de um usuário através de uma credencial específica.
   - **POST /planoAula/gerar-** Gera um plano de aula com base em um prompt textual.
-  - **GET /planoAula/usuario/:usuarioId-** Retorna os planos de aulas gerados por um determinado professor.
+  - **GET /planoAula/usuario/:usuarioId-** Retorna os planos de aula gerados por um determinado professor.
   - **GET /planoAula/:planoAulaId-** Retorna o plano de aula através de um id específico.
   - **DELETE /planoAula/:planoAulaId-** Exclui um plano de aula através de um id específico.
   - **PUT /planoAula/:planoAulaId-** Atualiza um plano de aula através de um id específico.
@@ -90,7 +90,7 @@ CREATE TABLE usuario (
 );
 ```
 
-**Tabela plano_aula**: armazena os planos de aulas criadas pelos usuários.
+**Tabela plano_aula**: armazena os planos de aula criadas pelos usuários.
 
 Estrutura:
 
@@ -267,7 +267,7 @@ Antes de subir os serviços com docker-compose, crie a rede compartilhada:
 
    - Criar credenciais
    - Criar usuários
-   - Criar e gerenciar planos de aulas
+   - Criar e gerenciar planos de aula
 
 #### **9. Encerrando os Contêineres**
 
@@ -485,10 +485,10 @@ Para utilizar os demais endpoints, é necessário criar um Usuário.
   }
   ```
 
-#### 5. **Visualizar Todos os planos de aulas de um determinado professor**
+#### 5. **Visualizar Todos os planos de aula de um determinado professor**
 
 - **Endpoint:** `GET /planoAula/usuario/:usuarioId`
-- **Descrição:** Lista todos os planos de aulas de um deterninado professor disponíveis.
+- **Descrição:** Lista todos os planos de aula de um deterninado professor disponíveis.
 - **Parâmetros:**
   - **usuarioId:** usuarioId do professor
 - **Resposta de Sucesso (200):**

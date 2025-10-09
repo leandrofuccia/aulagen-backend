@@ -6,8 +6,8 @@ export interface IPlanoAula {
   id?: number;
   titulo: string;
   duracao_total: string;
-  recursos_gerais?: string[]; // compatível com @Column({ array: true })
-  detalhes_plano_completo?: string; // compatível com @Column({ type: 'text' })
+  recursos_gerais?: string[];
+  detalhes_plano_completo?: string;
   avaliacao?: string;
   habilidade_bncc?: HabilidadeBNCC;
   criador?: Usuario;

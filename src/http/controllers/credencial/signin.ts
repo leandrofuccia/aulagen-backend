@@ -6,7 +6,6 @@ import { z } from 'zod';
 
 export async function signin(request: FastifyRequest, reply: FastifyReply) {
   try {
-    //Validação mais precisa usando Zod
     const registerBodySchema = z.object({
       username: z.string().email("O e-mail inserido é inválido"),
       password: z.string().min(4, "A senha deve ter pelo menos 4 caracteres"),
@@ -14,7 +13,6 @@ export async function signin(request: FastifyRequest, reply: FastifyReply) {
 
     console.log("Recebendo dados do request:", request.body);
 
-    // Validação do corpo da requisição
     const { username, password } = registerBodySchema.parse(request.body);
 
     const signinUseCase = makeSigninUseCase();
@@ -37,7 +35,6 @@ export async function signin(request: FastifyRequest, reply: FastifyReply) {
       return reply.status(401).send({ message: error.message });
     }
 
-    //Geração de token JWT
     const token = await reply.jwtSign({ username, credencialId: user.id });
 
     console.log("Login bem-sucedido para:", username);
@@ -46,7 +43,6 @@ export async function signin(request: FastifyRequest, reply: FastifyReply) {
   } catch (error) {
     console.error("Erro interno no servidor:", error);
 
-    //Tratamento para erros de validação do Fastify/Zod
     if (error instanceof z.ZodError) {
       return reply.status(400).send({ message: error.errors.map(e => e.message).join(", ") });
     }

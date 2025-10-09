@@ -1,35 +1,3 @@
-/*import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
-
-import { PlanoAula } from './planoAula.entity';
-import { Atividade } from './atividade.entity';
-
-@Entity('aula')
-export class Aula {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
-  numero_aula: number;
-
-  @Column()
-  titulo: string;
-
-  @Column({ type: 'text' })
-  objetivo: string;
-
-  @Column()
-  duracao: string;
-
-  @ManyToOne(() => PlanoAula, (planoAula) => planoAula.aulas, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'plano_aula_id' })
-  planoAula: PlanoAula;
-
-  @OneToMany(() => Atividade, (atividade) => atividade.aula)
-  atividades: Atividade[];
-}
-  */
-
-
 import {
   Entity,
   PrimaryGeneratedColumn,

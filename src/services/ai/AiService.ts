@@ -2,7 +2,6 @@ import axios from "axios";
 import https from "https";
 import { env } from "@/env";
 
-// Helpers internos
 function extractJson(text: string): string {
   const start = text.indexOf("{");
   const end = text.lastIndexOf("}");
